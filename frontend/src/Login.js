@@ -6,7 +6,6 @@ const [username, setUsername] = useState("");
 const [password, setPassword] = useState("");
 const [error, setError] = useState("");
 
-// Load saved username
 useEffect(() => {
 const savedUser = localStorage.getItem("username");
 if (savedUser) {
@@ -30,6 +29,7 @@ try {
 
   if (response.status === 200) {
     localStorage.setItem("username", username);
+    alert("Login successful");
     window.location.href = "/welcome";
   }
 } catch (err) {
@@ -44,55 +44,36 @@ try {
 };
 
 return (
-<div
-style={{
-textAlign: "center",
-marginTop: "120px",
-fontFamily: "Arial",
-}}
-> <h2>Login Page</h2>
+<div style={{ textAlign: "center", marginTop: "100px" }}> <h2>Login Page</h2>
 
 ```
   <form onSubmit={handleLogin}>
     <input
       type="text"
-      placeholder="Enter Username"
+      placeholder="Username"
       value={username}
       onChange={(e) => setUsername(e.target.value)}
       required
-      style={{ padding: "8px", width: "200px" }}
     />
 
-    <br /><br />
+    <br />
+    <br />
 
     <input
       type="password"
-      placeholder="Enter Password"
+      placeholder="Password"
       value={password}
       onChange={(e) => setPassword(e.target.value)}
       required
-      style={{ padding: "8px", width: "200px" }}
     />
 
-    <br /><br />
+    <br />
+    <br />
 
-    <button
-      type="submit"
-      style={{
-        padding: "10px 20px",
-        cursor: "pointer",
-        backgroundColor: "#007bff",
-        color: "white",
-        border: "none",
-      }}
-    >
-      Login
-    </button>
+    <button type="submit">Login</button>
   </form>
 
-  {error && (
-    <p style={{ color: "red", marginTop: "20px" }}>{error}</p>
-  )}
+  {error && <p style={{ color: "red" }}>{error}</p>}
 </div>
 ```
 

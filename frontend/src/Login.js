@@ -19,7 +19,7 @@ setError("");
 
 ```
 try {
-  const res = await axios.post(
+  const response = await axios.post(
     "https://login-backend-4gay.onrender.com/login",
     {
       username: username,
@@ -27,7 +27,7 @@ try {
     }
   );
 
-  if (res.status === 200) {
+  if (response.status === 200) {
     localStorage.setItem("username", username);
     window.location.href = "/welcome";
   }
@@ -43,7 +43,7 @@ try {
 };
 
 return (
-<div style={{ textAlign: "center", marginTop: "100px" }}> <h2>Login</h2>
+<div style={{ textAlign: "center", marginTop: "100px" }}> <h2>Login Page</h2>
 
 ```
   <form onSubmit={handleLogin}>

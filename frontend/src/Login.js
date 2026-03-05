@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function Login() {
+const Login = () => {
 const [username, setUsername] = useState("");
 const [password, setPassword] = useState("");
 const [error, setError] = useState("");
@@ -15,28 +15,23 @@ setUsername(savedUser);
 
 const handleLogin = async (e) => {
 e.preventDefault();
-setError("");
 
 ```
 try {
-  const response = await axios.post(
+  const res = await axios.post(
     "https://login-backend-4gay.onrender.com/login",
     {
       username: username,
-      password: password,
+      password: password
     }
   );
 
-  if (response.status === 200) {
+  if (res.status === 200) {
     localStorage.setItem("username", username);
     window.location.href = "/welcome";
   }
 } catch (err) {
-  if (err.response) {
-    setError(err.response.data.message);
-  } else {
-    setError("Server not responding");
-  }
+  setError("Invalid credentials");
 }
 ```
 
@@ -75,6 +70,6 @@ return (
 ```
 
 );
-}
+};
 
 export default Login;
